@@ -25,10 +25,14 @@
                 <h1 class="display-4">나홀로 링크 메모장!</h1>
                 <p class="lead">중요한 링크를 저장해두고, 나중에 볼 수 있는 공간입니다 </p>
                 <hr/>
-                <a class="btn btn-primary btn-lg" href="#" role="button">포스팅 박스 열기</a>
+                <a id= "open_input_box"
+                class="btn btn-primary btn-lg" 
+                href="#" 
+                role="button" 
+                onclick="onOpenbox()">포스팅 박스 열기</a>
               </div>
 
-              <form>
+              <form id="input_form">
                 <div class="form-group">
                   <label for="exampleInputEmail1">Email address</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
@@ -66,5 +70,44 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <script>
+      $("#input_form").hide();
+
+      let opened = false; 
+
+      function onOpenbox() {
+        if (opened == false) { 
+          $("#open_input_box").html("포스팅박스 닫기");
+        $("#input_form").show();
+        opened = true;
+        } else {
+          $("#open_input_box").html("포스팅박스 열기");
+        $("#input_form").hide();
+        opened = false;
+  
+
+        }
+
+    
+
+
+      }
+      
+  
+    </script>
+    <script>
+      $('#input_form').hide();
+
+      function toggleInputBox() {
+        $('#input_form').show();
+
+      }
+
+
+
+
+    </script>
+ 
   </body>
 </html>

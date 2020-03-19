@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <title>
+      Document
+    </title>
+    <h1>공적 마스크 판매 약국들</h1>
+
+    <div class="asdf">
+      <button class="asd" onclick="loadpage(1)">1</button>
+      <button class="asd" onclick="loadpage(2)">2</button>
+      <button class="asd" onclick="loadpage(3)">3</button>
+    </div>
+
+    <ol id="names">
+      <li>약국이름 1</li>
+      <li>약국이름 1</li>
+    </ol>
+
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      function loadpage(page) {
+        $.ajax({
+          url:
+            "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/stores/json",
+          type: "get",
+          data: {
+            page: page,
+            perpage: 600
+          },
+          success: function(response) {
+            let size = response.storeInfos.length;
+            $("#names").html("");
+            for (let i = 0; i < size; i++) {
+              let type = response.storeInfos[i].type;
+              if (type == "01") {
+                let name = response.storeInfos[i].name;
+                $("#names").append("<li>" + name + "</li>");
+              }
+            }
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
