@@ -51,6 +51,27 @@
           }
         });
       }
+
+      $.ajax({
+        url:
+          "https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/stores/json",
+        type: "get",
+        data: {
+          page: page,
+          perpage: 600
+        },
+        success: function(response) {
+          let size = response.totalpages;
+          $("#bottons").html("");
+          for (let i = 0; i < size; i++) {
+            let type = response.storeInfos[i].type;
+            if (type == "01") {
+              let name = response.storeInfos[i].name;
+              $("#names").append("<li>" + name + "</li>");
+            }
+          }
+        }
+      });
     </script>
   </body>
 </html>
